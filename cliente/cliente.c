@@ -3,7 +3,7 @@
 
 #include "cliente.h"
 
-int numeroRegistros(){
+int numeroRegistrosCliente(){
 	FILE *read;
 	int numeroDeRegistros = 0;
 	TCliente buffer;
@@ -18,13 +18,11 @@ int numeroRegistros(){
 	return numeroDeRegistros;
 }
 
-void index(TCliente *clientes){
+void indexCliente(TCliente *clientes){
 	FILE *read;
 	int contadorDeRegistrosIniciais;
 	
-	free(clientes);
-	
-	contadorDeRegistrosIniciais = numeroRegistros();
+	contadorDeRegistrosIniciais = numeroRegistrosCliente();
 	
 	read = fopen(DATABASECLIENTE, "rb");
 	clientes = (TCliente *) realloc(clientes, contadorDeRegistrosIniciais);
@@ -46,11 +44,11 @@ void listarClientesPontos(){
 	
 	clientes = (TCliente *) malloc(sizeof(TCliente));
 	
-	index(clientes);
+	indexCliente(clientes);
 	
-	for(int i = 0; i < numeroRegistros(); i++){
+	for(int i = 0; i < numeroRegistrosCliente(); i++){
 		if(clientes[i].pontos > 200){
-			listarCadastro(clientes[i]);
+			listarCadastroCliente(clientes[i]);
 		}
 	}
 }
@@ -60,17 +58,17 @@ void listarClientesIdade(){
 	
 	clientes = (TCliente *) malloc(sizeof(TCliente));
 	
-	index(clientes);
+	indexCliente(clientes);
 	
-	for(int i = 0; i < numeroRegistros(); i++){
+	for(int i = 0; i < numeroRegistrosCliente(); i++){
 		if(clientes[i].idade > 18 && clientes[i].idade < 25){
-			listarCadastro(clientes[i]);
+			listarCadastroCliente(clientes[i]);
 		}
 	}
 	
 }
 
-void listarCadastro(TCliente cliente){
+void listarCadastroCliente(TCliente cliente){
 	printf("CPF: %s\n", cliente.cpf);
 	printf("NOME: %s\n", cliente.nome);
 	printf("IDADE: %d\n", cliente.idade);

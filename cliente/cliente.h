@@ -15,9 +15,9 @@ typedef struct TCliente{
 
 char DATABASECLIENTE[26] = "../databases/cliente.dat";
 
-int numeroRegistros();
+int numeroRegistrosCliente();
 
-void index(TCliente *clientes);
+void indexCliente(TCliente *clientes);
 
 void cadastrarCliente(TCliente novoRegistro);
 
@@ -27,6 +27,6 @@ void listarClientesIdade();
 
 void listarClientesPontos();
 
-void listarCadastro(TCliente cliente);
+void listarCadastroCliente(TCliente cliente);
 
 #endif
