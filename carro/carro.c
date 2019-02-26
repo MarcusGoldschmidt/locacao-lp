@@ -71,3 +71,7 @@ void cadastrarCarro(TCarro novoCarro){
 	fwrite(&novoCarro, sizeof(TCarro), 1, database);
 	fclose(database);
 }
+
+void atualizarCarro(TCarro carro){
+	
+}

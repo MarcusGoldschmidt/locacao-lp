@@ -24,6 +24,8 @@ void indexCarro(TCarro *carros);
 
 void cadastrarCarro(TCarro novoCarro);
 
+void atualizarCarro(TCarro);
+
 void localizarCarroPorModelo(char modelo[10]);
 
 void listarCadastroCarro(TCarro carro);
