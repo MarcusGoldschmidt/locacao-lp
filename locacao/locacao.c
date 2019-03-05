@@ -63,16 +63,6 @@ void iniciarLocacao(int cpf, float motor, int arCondicionado){
 		printf("HORA: ");
 		scanf(" %d", &locacao.inicioLocacao.hora);
 		
-		printf("=== DATA DEVOLUCAO ===\n");
-		printf("DIA: ");
-		scanf(" %d", &locacao.devolucaoLocacao.dia);
-		printf("MES: ");
-		scanf(" %d", &locacao.devolucaoLocacao.mes);
-		printf("ANO: ");
-		scanf(" %d", &locacao.devolucaoLocacao.ano);
-		printf("HORA: ");
-		scanf(" %d", &locacao.devolucaoLocacao.hora);
-		
 		locacao.id = quantidadeRegistros + 1;
 		locacao.carro_id = carro.id;
 		locacao.quilometragemInicial = carro.quilometragem;
@@ -113,6 +103,16 @@ void finalizarLocacao(int idLocacao,TData data,int quilometragemEntrega){
 		}
 	}
 	
+	printf("=== DATA DEVOLUCAO ===\n");
+	printf("DIA: ");
+	scanf(" %d", &locacao.devolucaoLocacao.dia);
+	printf("MES: ");
+	scanf(" %d", &locacao.devolucaoLocacao.mes);
+	printf("ANO: ");
+	scanf(" %d", &locacao.devolucaoLocacao.ano);
+	printf("HORA: ");
+	scanf(" %d", &locacao.devolucaoLocacao.hora);
+	
 	// Encontrando carro
 	databaseCarro = fopen(DATABASECARRO, "rb");
 	auxLogico = 0;
@@ -132,7 +132,7 @@ void finalizarLocacao(int idLocacao,TData data,int quilometragemEntrega){
 	carro.disponivel = 1;
 	fwrite(&carro, sizeof(TCarro), 1, databaseCarro);
 	fclose(databaseCarro);
-	fclose(databaseLocacao)
+	fclose(databaseLocacao);
 }
 
 float calculoValorTotal(TData inicioLocacao, TData finalLocacao, float valor){
