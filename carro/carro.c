@@ -99,9 +99,14 @@ void disponibilizarCarrosVenda(){
 	databaseCarro = fopen(DATABASECARRO, "rb");
 	databaseVenda = fopen(DATABASECARRO, "ab");
 	
+	printf("PLACA | MODELO | ANO FABRICACAO\n");
 	while(fread(&bufferCarro, sizeof(TCarro), 1, databaseCarro) != 0){
 		if((bufferCarro.anoFabricacao - 2019) > 3){
 			fwrite(&bufferCarro, sizeof(TCarro), 1, databaseVenda);
+			printf(" %s |", bufferCarro.placa);
+			printf(" %s |", bufferCarro.modelo);
+			printf(" %d |", bufferCarro.anoFabricacao);
+			printf("\n");
 		}
 	}
 }
