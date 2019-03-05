@@ -7,7 +7,7 @@ void telaLocacao(){
     		printf("\n\t# # Locação \n\t[1]Nova Locação \n\t[2]Finalizar Locação \n\t[3]Quantidade de Carros Emprestados \n\t[9]Voltar");
         	scanf("%d",&menu);
 		if(menu == 1){
-			system("cls");
+			system("clear");
 			printf("\n\t# # Locação");
 			printf("\n\t# # # Nova Locação\n");
 
@@ -24,7 +24,7 @@ void telaLocacao(){
 			iniciarLocacao(atoi(cpf), motor, arCondicionado);		
 		}
 		if(menu == 2){
-			system("cls");
+			system("clear");
 			printf("\n\t# # Locação");
 			printf("\n\t# # # Finalizar Locação\n");
 
@@ -49,7 +49,7 @@ void telaLocacao(){
 			finalizarLocacao(idLocacao, data, quilometragemEntrega);		
 		}
 		if(menu == 3){
-			system("cls");
+			system("clear");
 			printf("\n\t# # Locação");
 			printf("\n\t# # # Quantidade de Carros Emprestados\n");
 
