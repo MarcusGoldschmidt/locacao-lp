@@ -66,6 +66,9 @@ void listarCadastroCarro(TCarro carro){
 
 void cadastrarCarro(TCarro novoCarro){
 	FILE *database;
+	
+	novoCarro.id = numeroRegistrosCarros() + 1;
+	
 	database = fopen(DATABASECARRO, "ab");
 	
 	fwrite(&novoCarro, sizeof(TCarro), 1, database);
@@ -73,5 +76,48 @@ void cadastrarCarro(TCarro novoCarro){
 }
 
 void atualizarCarro(TCarro carro){
+	FILE *database;
+	TCarro buffer;
+	int aux = 0;
 	
+	database = fopen(DATABASECARRO, "rb+");
+	
+	while((fread(&buffer,sizeof(TCarro), 1,database) != 0) && (buffer.id == carro.id)){
+		aux++;
+	}
+	
+	fseek(database, aux - 1, SEEK_SET);
+	fwrite(&carro, sizeof(TCarro), 1, database);
+	fclose(database);
+}
+
+void disponibilizarCarrosVenda(){
+	FILE *databaseCarro;
+	FILE *databaseVenda;
+	TCarro bufferCarro;
+	
+	databaseCarro = fopen(DATABASECARRO, "rb");
+	databaseVenda = fopen(DATABASECARRO, "ab");
+	
+	while(fread(&bufferCarro, sizeof(TCarro), 1, databaseCarro) != 0){
+		if((bufferCarro.anoFabricacao - 2019) > 3){
+			fwrite(&bufferCarro, sizeof(TCarro), 1, databaseVenda);
+		}
+	}
+}
+
+int quantidadeCarrosEmprestados(){
+	FILE *database;
+	TCarro bufferCarro;
+	int aux = 0;
+	
+	database = fopen(DATABASECARRO, "rb");
+	
+	while(fread(&bufferCarro, sizeof(TCarro), 1, database) != 0){
+		if(bufferCarro.disponivel == 0){
+			aux++;
+		}
+	}
+	
+	return aux;
 }

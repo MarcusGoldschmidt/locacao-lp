@@ -10,6 +10,7 @@ typedef struct TCarro{
 	char cor[6];
 	float motor;
 	int anoFabricacao;
+	char placa[8];
 	int arCondicionado;
 	int quilometragem;
 	float valorDiaria;
@@ -17,6 +18,7 @@ typedef struct TCarro{
 }TCarro;
 
 char DATABASECARRO[26] = "../databases/carro.dat";
+char DATABASEVENDA[26] = "../databases/venda.dat";
 
 int numeroRegistrosCarros();
 
@@ -29,5 +31,9 @@ void atualizarCarro(TCarro);
 void localizarCarroPorModelo(char modelo[10]);
 
 void listarCadastroCarro(TCarro carro);
+
+void disponibilizarCarrosVenda();
+
+int quantidadeCarrosEmprestados();
 
 #endif
