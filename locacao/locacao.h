@@ -9,6 +9,7 @@ typedef struct TData{
 	int dia;
 	int mes;
 	int ano;
+	int hora;
 }TData;
 
 typedef struct TLocacao{
@@ -27,5 +28,9 @@ char DATABASELOCACAO[26] = "../databases/locacao.dat";
 int numeroRegistrosLocacoes();
 
 void iniciarLocacao(int cpf, float motor, int arCondicionado);
+
+void finalizarLocacao(int idLocacao,TData data,int quilometragemEntrega);
+
+float calculoValorTotal(TData inicioLocacao, TData finalLocacao, float valorDiaria);
 
 #endif

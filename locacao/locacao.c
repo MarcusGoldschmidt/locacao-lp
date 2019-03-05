@@ -60,6 +60,9 @@ void iniciarLocacao(int cpf, float motor, int arCondicionado){
 		scanf(" %d", &locacao.inicioLocacao.mes);
 		printf("ANO: ");
 		scanf(" %d", &locacao.inicioLocacao.ano);
+		printf("HORA: ");
+		scanf(" %d", &locacao.inicioLocacao.hora);
+		
 		printf("=== DATA DEVOLUCAO ===\n");
 		printf("DIA: ");
 		scanf(" %d", &locacao.devolucaoLocacao.dia);
@@ -67,6 +70,8 @@ void iniciarLocacao(int cpf, float motor, int arCondicionado){
 		scanf(" %d", &locacao.devolucaoLocacao.mes);
 		printf("ANO: ");
 		scanf(" %d", &locacao.devolucaoLocacao.ano);
+		printf("HORA: ");
+		scanf(" %d", &locacao.devolucaoLocacao.hora);
 		
 		locacao.id = quantidadeRegistros + 1;
 		locacao.carro_id = carro.id;
@@ -86,4 +91,65 @@ void iniciarLocacao(int cpf, float motor, int arCondicionado){
 	
 	fclose(databaseCarro);
 	fclose(databaseLocacao);
+}
+
+void finalizarLocacao(int idLocacao,TData data,int quilometragemEntrega){
+	FILE *databaseLocacao;
+	FILE *databaseCarro;
+	
+	TLocacao locacao;
+	TCarro carro;
+
+	int posicaoLocacao = 0;
+	int posicaoCarro = 0;
+	int auxLogico = 0;
+	
+	// Encontrando locacao
+	databaseLocacao = fopen(DATABASELOCACAO, "rb");
+	while(fread(&locacao, sizeof(TLocacao),1,databaseLocacao) && (auxLogico == 0)){
+		posicaoLocacao++;
+		if(locacao.id == idLocacao){
+			auxLogico = 1;
+		}
+	}
+	
+	// Encontrando carro
+	databaseCarro = fopen(DATABASECARRO, "rb");
+	auxLogico = 0;
+	while(fread(&carro, sizeof(TCarro),1,databaseCarro) && (auxLogico == 0)){
+		posicaoCarro++;
+		if(carro.id == locacao.carro_id){
+			auxLogico = 1;
+		}
+	}
+	
+	locacao.valorTotal = calculoValorTotal(locacao.inicioLocacao, locacao.devolucaoLocacao, carro.valorDiaria);
+	
+	printf("VALOR TOTAL: %f\n", locacao.valorTotal);
+	
+	// deixando carro disponivel
+	fseek(databaseCarro, posicaoCarro - 1, SEEK_SET);
+	carro.disponivel = 1;
+	fwrite(&carro, sizeof(TCarro), 1, databaseCarro);
+	fclose(databaseCarro);
+	fclose(databaseLocacao)
+}
+
+float calculoValorTotal(TData inicioLocacao, TData finalLocacao, float valor){
+	float valorTotal = 0;
+	int quantidadeDias = 0;
+	
+	// Em um mundo perfeito
+	quantidadeDias = (finalLocacao.dia - inicioLocacao.dia);
+	quantidadeDias += (finalLocacao.mes - inicioLocacao.mes) * 30;
+	quantidadeDias += (finalLocacao.ano - inicioLocacao.ano) * 365;
+	
+	if(quantidadeDias == 0){
+		return valor;
+	}
+	
+	valorTotal = valor * quantidadeDias;
+	valorTotal += ((finalLocacao.hora - inicioLocacao.hora) / 24) * valor;
+	
+	return valorTotal;
 }
