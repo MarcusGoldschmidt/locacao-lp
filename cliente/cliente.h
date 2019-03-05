@@ -1,7 +1,11 @@
 #ifndef __CLIENTE_H
 #define __CLIENTE_H
-
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+#include "../locacao/locacao.h"
+#include "../carro/carro.h"
 
 typedef struct TCliente{
     char cpf[13];
@@ -21,12 +25,14 @@ void indexCliente(TCliente *clientes);
 
 void cadastrarCliente(TCliente novoRegistro);
 
-void atualizarPontuacao(TCliente registroAtualizado);
+void atualizarPontuacao(char cpf[13]);
 
 void listarClientesIdade();
 
 void listarClientesPontos();
 
 void listarCadastroCliente(TCliente cliente);
+
+void localizarLocacao();
 
 #endif
