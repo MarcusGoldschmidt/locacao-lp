@@ -18,21 +18,21 @@ CARROO=./carro/carro.o
 
 all: index
 
-index : main.o telalocacao.o telacarro.o telacliente.o
+index : main.o telalocacao.o telacarro.o telacliente.o locacao.o carro.o cliente.o
 	# Linkando e gerando executável
-	gcc -o index main.o $(TELALOCACAOO) $(TELACARROO) $(TELACLIENTEO)
+	gcc -o index main.o $(TELALOCACAOO) $(TELACARROO) $(TELACLIENTEO) $(LOCACAOO) $(CARROO) $(CLIENTEO)
 	
 main.o: main.c $(TELALOCACAOH) $(TELACLIENTEH) $(TELACARROH)
 	gcc -o main.o -c main.c -W -Wall
 
 # Telas
-telalocacao.o: $(TELALOCACAOO) locacao.o $(TELALOCACAOH)
+telalocacao.o: $(TELALOCACAOO) $(TELALOCACAOH)
 	gcc -o $(TELALOCACAOO) -c ./tela/locacao/telalocacao.c -W -Wall
 	
-telacliente.o: $(TELACLIENTEO) cliente.o $(CLIENTEH)
+telacliente.o: $(TELACLIENTEO) $(CLIENTEH)
 	gcc -o $(TELACLIENTEO) -c ./tela/cliente/telacliente.c -W -Wall
 	
-telacarro.o: $(TELACARROO) carro.o $(CARROH)
+telacarro.o: $(TELACARROO) $(CARROH)
 	gcc -o $(TELACARROO) -c ./tela/carro/telacarro.c -W -Wall
 
 # Tipos basicos
