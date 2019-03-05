@@ -63,6 +63,11 @@ void iniciarLocacao(int cpf, float motor, int arCondicionado){
 		printf("HORA: ");
 		scanf(" %d", &locacao.inicioLocacao.hora);
 		
+		locacao.devolucaoLocacao.dia = 0;
+		locacao.devolucaoLocacao.mes = 0;
+		locacao.devolucaoLocacao.ano = 0;
+		locacao.devolucaoLocacao.hora = 0;
+		
 		locacao.id = quantidadeRegistros + 1;
 		locacao.carro_id = carro.id;
 		locacao.quilometragemInicial = carro.quilometragem;
@@ -95,7 +100,7 @@ void finalizarLocacao(int idLocacao,TData data,int quilometragemEntrega){
 	int auxLogico = 0;
 	
 	// Encontrando locacao
-	databaseLocacao = fopen(DATABASELOCACAO, "rb");
+	databaseLocacao = fopen(DATABASELOCACAO, "rb+");
 	while(fread(&locacao, sizeof(TLocacao),1,databaseLocacao) && (auxLogico == 0)){
 		posicaoLocacao++;
 		if(locacao.id == idLocacao){
@@ -103,18 +108,13 @@ void finalizarLocacao(int idLocacao,TData data,int quilometragemEntrega){
 		}
 	}
 	
-	printf("=== DATA DEVOLUCAO ===\n");
-	printf("DIA: ");
-	scanf(" %d", &locacao.devolucaoLocacao.dia);
-	printf("MES: ");
-	scanf(" %d", &locacao.devolucaoLocacao.mes);
-	printf("ANO: ");
-	scanf(" %d", &locacao.devolucaoLocacao.ano);
-	printf("HORA: ");
-	scanf(" %d", &locacao.devolucaoLocacao.hora);
+	locacao.devolucaoLocacao.dia = data.dia;
+	locacao.devolucaoLocacao.mes = data.mes;
+	locacao.devolucaoLocacao.ano = data.ano;
+	locacao.devolucaoLocacao.hora = data.hora;
 	
 	// Encontrando carro
-	databaseCarro = fopen(DATABASECARRO, "rb");
+	databaseCarro = fopen(DATABASECARRO, "rb+");
 	auxLogico = 0;
 	while(fread(&carro, sizeof(TCarro),1,databaseCarro) && (auxLogico == 0)){
 		posicaoCarro++;
@@ -123,14 +123,21 @@ void finalizarLocacao(int idLocacao,TData data,int quilometragemEntrega){
 		}
 	}
 	
+	// Atualizando locacao
+	locacao.quilometragemFinal = quilometragemEntrega;
 	locacao.valorTotal = calculoValorTotal(locacao.inicioLocacao, locacao.devolucaoLocacao, carro.valorDiaria);
-	
 	printf("VALOR TOTAL: %f\n", locacao.valorTotal);
 	
+	fseek(databaseLocacao, posicaoLocacao - 1, SEEK_SET);
+	fwrite(&locacao, sizeof(TLocacao), 1, databaseLocacao);
+	
 	// deixando carro disponivel
-	fseek(databaseCarro, posicaoCarro - 1, SEEK_SET);
+	carro.quilometragem = quilometragemEntrega;
 	carro.disponivel = 1;
+	
+	fseek(databaseCarro, posicaoCarro - 1, SEEK_SET);
 	fwrite(&carro, sizeof(TCarro), 1, databaseCarro);
+	
 	fclose(databaseCarro);
 	fclose(databaseLocacao);
 }
