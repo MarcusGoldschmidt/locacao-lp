@@ -19,11 +19,10 @@ CARROO=./carro/carro.o
 all: index
 
 index : main.o telalocacao.o telacarro.o telacliente.o
-	# Index
-	gcc -o index main.o telalocacao.o telacarro.o telacliente.o
+	# Linkando e gerando executável
+	gcc -o index main.o $(TELALOCACAOO) $(TELACARROO) $(TELACLIENTEO)
 	
 main.o: main.c $(TELALOCACAOH) $(TELACLIENTEH) $(TELACARROH)
-	# Linkando e gerando executável
 	gcc -o main.o -c main.c -W -Wall
 
 # Telas
