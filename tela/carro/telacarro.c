@@ -1,13 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "../carro/carro.h"
+#include "../../carro/carro.h"
 void telaCarro(){
     int menu = 0;
     while (menu != 9){  
         printf("\n\t# # CARROS \n\t[1]Cadastrar Novo Carro \n\t[2]Atualizar Informações do Carro \n\t[3]Disponibilizar Carros p/ Venda \n\t[4]Localizar Carro Por Modelo \n\t[9]Voltar");
         scanf("%d",&menu);
         if(menu == 1){
-			System("cls");
+			system("cls");
 			TCarro aux;
 			aux.arCondicionado = 0;
 			aux.disponivel = 0;
@@ -37,7 +37,7 @@ void telaCarro(){
 			cadastrarCarro(aux);				
 		}
 		if(menu == 2){
-			System("cls");
+			system("cls");
 			TCarro aux;
 			aux.arCondicionado = 0;
 			aux.disponivel = 0;
@@ -69,14 +69,14 @@ void telaCarro(){
 			atualizarCarro(aux);		
 		}
 		if(menu == 3){
-			System("cls");
+			system("cls");
 			printf("\n\t# # CARROS");
 			printf("\n\t# # # Carros Disponiveis Para Venda ");
 			
 			disponibilizarCarrosVenda();		
 		}
 		if(menu == 4){
-			System("cls");
+			system("cls");
 			printf("\n\t# # CARROS");
 			printf("\n\t# # # Localizar Carro Por Modelo ");
 			char modelo[10];
@@ -86,7 +86,7 @@ void telaCarro(){
 			localizarCarroPorModelo(modelo);		
 		}
 		if(menu == 9){
-			System("cls");		
+			system("cls");		
 		}
         else{printf("\nComando não conhecido.\nTente Novamente.\n");}     
     }

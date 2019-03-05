@@ -1,13 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "../locacao/locacao.h"
+#include "../../locacao/locacao.h"
 void telaLocacao(){
     int menu = 0;
     while(menu != 9){
     		printf("\n\t# # Locação \n\t[1]Nova Locação \n\t[2]Finalizar Locação \n\t[3]Quantidade de Carros Emprestados \n\t[9]Voltar");
         	scanf("%d",&menu);
 		if(menu == 1){
-			System("cls");
+			system("cls");
 			printf("\n\t# # Locação");
 			printf("\n\t# # # Nova Locação\n");
 
@@ -21,10 +21,10 @@ void telaLocacao(){
 			printf("\t      Ar Condicionado: ");
 			scanf(" %d",&arCondicionado);
 
-			iniciarLocacao(cpf, motor, arCondicionado);		
+			iniciarLocacao(atoi(cpf), motor, arCondicionado);		
 		}
 		if(menu == 2){
-			System("cls");
+			system("cls");
 			printf("\n\t# # Locação");
 			printf("\n\t# # # Finalizar Locação\n");
 
@@ -49,7 +49,7 @@ void telaLocacao(){
 			finalizarLocacao(idLocacao, data, quilometragemEntrega);		
 		}
 		if(menu == 3){
-			System("cls");
+			system("cls");
 			printf("\n\t# # Locação");
 			printf("\n\t# # # Quantidade de Carros Emprestados\n");
 

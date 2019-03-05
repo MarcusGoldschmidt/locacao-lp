@@ -3,7 +3,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include "../locacao/locacao.h"
+#include "../../locacao/locacao.h"
 
 void telaLocacao();
 

@@ -40,7 +40,7 @@ void iniciarLocacao(int cpf, float motor, int arCondicionado){
 	// Para quando chegar no final do arquivo, ou no primeiro carro disponível
 	while((fread(&carro, sizeof(TCarro),1,databaseCarro) != 0) && (auxLogico != 1)){
 		posicaoCarroFile++;
-		if(carro.disponivel == 1){
+		if((carro.disponivel == 1) && (carro.arCondicionado == arCondicionado) && ( carro.motor == motor)){
 			auxLogico = 1;
 		}
 	}

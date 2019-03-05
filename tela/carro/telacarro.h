@@ -3,7 +3,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include "../carro/carro.h"
+#include "../../carro/carro.h"
 
 void telaCarro();
 

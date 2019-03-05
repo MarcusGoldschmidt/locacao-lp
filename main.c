@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "/tela/locacao/telalocacao.h"
-#include "/tela/carro/telacarro.h"
-#include "/tela/cliente/telacliente.h"
+#include "./tela/locacao/telalocacao.h"
+#include "./tela/carro/telacarro.h"
+#include "./tela/cliente/telacliente.h"
 
 void main(){
     int menu = 0;
