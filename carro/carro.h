@@ -1,5 +1,5 @@
-#ifndef __CLIENTE_H
-#define __CLIENTE_H
+#ifndef __CARRO_H
+#define __CARRO_H
 
 #include <stdio.h>
 #include <string.h>
