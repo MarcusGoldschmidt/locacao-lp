@@ -7,7 +7,7 @@
 int main(){
     int menu = 0;
     while (menu != 9){  
-        printf("# MENU PRINCIPAL \n  [1]Locações \n  [2]Clientes \n  [3]Carros \n  [9]Sair \n  Opção: ");
+        printf("# MENU PRINCIPAL \n  [1]Locações \n  [2]Clientes \n  [3]Carros \n  [9]Sair \n  Opção ");
         scanf("%d",&menu);
         if(menu == 1){
 			system("clear");
