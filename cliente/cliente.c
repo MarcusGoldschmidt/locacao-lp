@@ -97,7 +97,7 @@ void atualizarPontuacao(char cpf[13]){
 	// Achando cliente
 	while((fread(&cliente,sizeof(TCliente), 1, databaseCliente) != 0) && (auxLogico == 0)){
 		auxPosicao++;
-		if(strcmp(cliente.cpf, cpf) == 1){
+		if(strcmp(cliente.cpf, cpf) == 0){
 			auxLogico = 1;
 		}
 	}
