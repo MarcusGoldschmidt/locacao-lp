@@ -128,7 +128,7 @@ void finalizarLocacao(int idLocacao,TData data,int quilometragemEntrega){
 	locacao.valorTotal = calculoValorTotal(locacao.inicioLocacao, locacao.devolucaoLocacao, carro.valorDiaria);
 	printf("VALOR TOTAL: %f\n", locacao.valorTotal);
 	
-	fseek(databaseLocacao, sizeof(TLocacao) (posicaoLocacao - 1), SEEK_SET);
+	fseek(databaseLocacao, sizeof(TLocacao) * (posicaoLocacao - 1), SEEK_SET);
 	fwrite(&locacao, sizeof(TLocacao), 1, databaseLocacao);
 	
 	// deixando carro disponivel
