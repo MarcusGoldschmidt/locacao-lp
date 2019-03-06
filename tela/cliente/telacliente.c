@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include "../../cliente/cliente.h"
 void telaCliente(){
+    system("clear");
     int menu = 0;
     while(menu != 9){
     	printf("\n\t# # Clientes \n\t[1]Cadastrar Novo Cliente \n\t[2]Atualizar Pontuação \n\t[3]Localizar Locações Realizadas \n\t[4]Listar Clientes entre 18 e 25 \n\t[5]Listar Clientes acima de 200 Pontos \n\t[9]Voltar \n\tOpção ");
@@ -62,6 +63,7 @@ void telaCliente(){
 
 			listarClientesPontos();			
 		}
-		else{printf("\nComando não conhecido.\nTente Novamente.\n");}    
-    }
+		if((menu < 0)&&(menu > 5)&&(menu != 9))
+        	printf("\nComando não conhecido.\nTente Novamente.\n");    
+        }
 }

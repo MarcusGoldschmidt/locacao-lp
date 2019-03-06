@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include "../../locacao/locacao.h"
 void telaLocacao(){
+    system("clear");
     int menu = 0;
     while(menu != 9){
     		printf("\n\t# # Locação \n\t[1]Nova Locação \n\t[2]Finalizar Locação \n\t[3]Quantidade de Carros Emprestados \n\t[9]Voltar");
@@ -56,6 +57,7 @@ void telaLocacao(){
 			printf("\tO atual número de carros alugados é: %d", numeroRegistrosLocacoes());
 		
 		}
-		else{printf("\nComando não conhecido.\nTente Novamente.\n");}    
+		if((menu < 0)&&(menu > 3)&&(menu != 9))
+        	printf("\nComando não conhecido.\nTente Novamente.\n");    
     }
 }

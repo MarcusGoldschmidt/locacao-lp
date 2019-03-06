@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include "../../carro/carro.h"
 void telaCarro(){
+    system("clear");
     int menu = 0;
     while (menu != 9){  
         printf("\n\t# # CARROS \n\t[1]Cadastrar Novo Carro \n\t[2]Atualizar Informações do Carro \n\t[3]Disponibilizar Carros p/ Venda \n\t[4]Localizar Carro Por Modelo \n\t[9]Voltar\n\tOpção ");
@@ -95,6 +96,7 @@ void telaCarro(){
 		if(menu == 9){
 			system("clear");		
 		}
-        else{printf("\nComando não conhecido.\nTente Novamente.\n");}     
+        if((menu < 0)&&(menu > 4)&&(menu != 9))
+        	printf("\nComando não conhecido.\nTente Novamente.\n");     
     }
 }

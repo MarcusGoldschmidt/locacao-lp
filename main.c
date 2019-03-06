@@ -24,7 +24,8 @@ int main(){
 		if(menu == 9){
 			
 		}
-        else{printf("Comando não conhecido.\nTente Novamente.\n");}     
+        if((menu < 0)&&(menu > 3)&&(menu != 9))
+        	printf("\nComando não conhecido.\nTente Novamente.\n");     
     }
     return 0;
 }
