@@ -75,7 +75,7 @@ void iniciarLocacao(int cpf, float motor, int arCondicionado){
 		locacao.cpf = cpf;
 		
 		// Atualizando carro
-		fseek(databaseCarro, posicaoCarroFile - 1, SEEK_SET);
+		fseek(databaseCarro,sizeof(TCarro) * (posicaoCarroFile - 1), SEEK_SET);
 		carro.disponivel = 0;
 		fwrite(&carro,sizeof(TCarro),1,databaseCarro);
 		fflush(databaseCarro);
@@ -128,14 +128,14 @@ void finalizarLocacao(int idLocacao,TData data,int quilometragemEntrega){
 	locacao.valorTotal = calculoValorTotal(locacao.inicioLocacao, locacao.devolucaoLocacao, carro.valorDiaria);
 	printf("VALOR TOTAL: %f\n", locacao.valorTotal);
 	
-	fseek(databaseLocacao, posicaoLocacao - 1, SEEK_SET);
+	fseek(databaseLocacao, sizeof(TLocacao) (posicaoLocacao - 1), SEEK_SET);
 	fwrite(&locacao, sizeof(TLocacao), 1, databaseLocacao);
 	
 	// deixando carro disponivel
 	carro.quilometragem = quilometragemEntrega;
 	carro.disponivel = 1;
 	
-	fseek(databaseCarro, posicaoCarro - 1, SEEK_SET);
+	fseek(databaseCarro,sizeof(TCarro) * (posicaoCarro - 1), SEEK_SET);
 	fwrite(&carro, sizeof(TCarro), 1, databaseCarro);
 	
 	fclose(databaseCarro);

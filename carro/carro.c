@@ -86,7 +86,7 @@ void atualizarCarro(TCarro carro){
 		aux++;
 	}
 	
-	fseek(database, aux - 1, SEEK_SET);
+	fseek(database, sizeof(TCarro) * (aux - 1), SEEK_SET);
 	fwrite(&carro, sizeof(TCarro), 1, database);
 	fclose(database);
 }

@@ -111,7 +111,7 @@ void atualizarPontuacao(char cpf[13]){
 	printf("%d PONTOS\n", cliente.pontos);
 	
 	// Salvando dados no arquivo
-	fseek(databaseCliente, auxPosicao - 1, SEEK_SET);
+	fseek(databaseCliente, sizeof(TCliente) * (auxPosicao - 1), SEEK_SET);
 	fwrite(&cliente, sizeof(TCliente),1,databaseCliente);
 	
 	fclose(databaseCliente);
