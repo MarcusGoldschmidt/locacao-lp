@@ -9,8 +9,6 @@ int numeroRegistrosCarros(){
 	int numeroDeRegistros = 0;
 	TCarro buffer;
 	
-	printf("teste1\n");
-	
 	read = fopen(DATABASECARRO, "rb");
 	
 	while(fread(&buffer, sizeof(TCarro), 1, read) != 0){
@@ -70,8 +68,6 @@ void cadastrarCarro(TCarro novoCarro){
 	FILE *database;
 	
 	novoCarro.id = numeroRegistrosCarros() + 1;
-	
-	printf("teste2\n");
 	
 	database = fopen(DATABASECARRO, "ab");
 	
