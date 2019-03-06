@@ -17,7 +17,7 @@ typedef struct TCliente{
 	int pontos;
 }TCliente;
 
-#define DATABASECLIENTE "../databases/cliente.dat"
+#define DATABASECLIENTE "../databases/clientes.dat"
 
 int numeroRegistrosCliente();
 

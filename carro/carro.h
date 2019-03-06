@@ -17,8 +17,8 @@ typedef struct TCarro{
 	int disponivel;
 }TCarro;
 
-#define DATABASECARRO "../databases/carro.dat"
-#define DATABASEVENDA "../databases/venda.dat"
+#define DATABASECARRO "./databases/carros.dat"
+#define DATABASEVENDA "./databases/vendas.dat"
 
 int numeroRegistrosCarros();
 

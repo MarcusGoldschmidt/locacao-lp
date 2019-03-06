@@ -23,7 +23,7 @@ typedef struct TLocacao{
 	float valorTotal;
 }TLocacao;
 
-#define DATABASELOCACAO "../databases/locacao.dat"
+#define DATABASELOCACAO "../databases/locacoes.dat"
 
 int numeroRegistrosLocacoes();
 
