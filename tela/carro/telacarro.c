@@ -10,7 +10,7 @@ void telaCarro(){
 			system("clear");
 			TCarro aux;		
             aux.disponivel = 0;
-              aux.arCondicionado = 0;
+             aux.arCondicionado = 0;
 			printf("\n\t# # CARROS\n");
 			printf("\t# # # Cadastrar Novo Carro\n");
 			printf("\t      Modelo: ");

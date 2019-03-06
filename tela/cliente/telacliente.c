@@ -4,10 +4,10 @@
 void telaCliente(){
     int menu = 0;
     while(menu != 9){
-    	printf("\n\t# # Clientes \n\t[1]Cadastrar Novo Cliente \n\t[2]Atualizar Pontuação \n\t[3]Localizar Locações Realizadas \n\t[4]Listar Clientes entre 18 e 25 \n\t[5]Listar Clientes acima de 200 Pontos \n\t[9]Voltar");
+    	printf("\n\t# # Clientes \n\t[1]Cadastrar Novo Cliente \n\t[2]Atualizar Pontuação \n\t[3]Localizar Locações Realizadas \n\t[4]Listar Clientes entre 18 e 25 \n\t[5]Listar Clientes acima de 200 Pontos \n\t[9]Voltar \n\tOpção ");
         scanf("%d",&menu);
 		if(menu == 1){
-			system("clear");
+			system("cls");
 			printf("\n\t# # Clientes\n");
 			printf("\t# # # Cadastrar Novo Cliente\n");
 			TCliente aux;
@@ -31,7 +31,7 @@ void telaCliente(){
 			cadastrarCliente(aux);		
 		}
 		if(menu == 2){
-			system("clear");
+			system("cls");
 			printf("\n\t# # Clientes\n");
 			printf("\n\t# # # Atualizar Pontuação\n");
 			char cpf[13];
@@ -41,7 +41,7 @@ void telaCliente(){
 			atualizarPontuacao(cpf);
 		}
 		if(menu == 3){
-			system("clear");
+			system("cls");
 			printf("\n\t# # Clientes\n");
 			printf("\n\t# # # Localizar Locações Realizadas\n");
 
@@ -49,14 +49,14 @@ void telaCliente(){
 
 		}
 		if(menu == 4){
-			system("clear");
+			system("cls");
 			printf("\n\t# # Clientes\n");
 			printf("\n\t# # # Listar Clientes entre 18 e 25\n");
 
 			listarClientesIdade();
 		}
 		if(menu == 5){
-			system("clear");
+			system("cls");
 			printf("\n\t# # Clientes\n");
 			printf("\n\t# # # Listar Clientes Acima de 200 Pontos\n");
 
