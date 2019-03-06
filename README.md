@@ -2,6 +2,6 @@
 
 ## Instalando
 
-`make`
+- `make`
 
-`./index`
+- `./index`
