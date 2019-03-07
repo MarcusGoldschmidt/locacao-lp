@@ -116,12 +116,6 @@ void finalizarLocacao(int idLocacao,TData data,int quilometragemEntrega){
 	locacao.devolucaoLocacao.mes = data.mes;
 	locacao.devolucaoLocacao.ano = data.ano;
 	locacao.devolucaoLocacao.hora = data.hora;
-	
-	printf("DEBUG\n");
-	printf("DIAS: %d\n", locacao.inicioLocacao.dia);
-	printf("MES: %d\n", locacao.inicioLocacao.mes);
-	printf("ANO: %d\n", locacao.inicioLocacao.ano);
-	
 	// Encontrando carro
 	databaseCarro = fopen(DATABASECARRO, "rb+");
 	auxLogico = 0;
