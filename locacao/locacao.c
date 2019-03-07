@@ -34,8 +34,8 @@ void iniciarLocacao(int cpf, float motor, int arCondicionado){
 	
 	carro.id = 0;
 	
-	databaseCarro = fopen(DATABASECARRO, "rb");
-	databaseLocacao = fopen(DATABASELOCACAO, "rb+");
+	databaseCarro = fopen(DATABASECARRO, "rb+");
+	databaseLocacao = fopen(DATABASELOCACAO, "ab");
 	
 	// Para quando chegar no final do arquivo, ou no primeiro carro disponível que atenda a condição do arCondicionado
 	while((fread(&carro, sizeof(TCarro),1,databaseCarro) != 0) && (auxLogico != 1)){
@@ -78,6 +78,9 @@ void iniciarLocacao(int cpf, float motor, int arCondicionado){
 		fseek(databaseCarro,sizeof(TCarro) * (posicaoCarroFile - 1), SEEK_SET);
 		carro.disponivel = 0;
 		fwrite(&carro,sizeof(TCarro),1,databaseCarro);
+		
+		// Ajustando cursor de locacao
+		
 		fflush(databaseCarro);
 		fflush(databaseLocacao);
 	}else{
@@ -112,6 +115,11 @@ void finalizarLocacao(int idLocacao,TData data,int quilometragemEntrega){
 	locacao.devolucaoLocacao.mes = data.mes;
 	locacao.devolucaoLocacao.ano = data.ano;
 	locacao.devolucaoLocacao.hora = data.hora;
+	
+	printf("DEBUG\n");
+	printf("DIAS: %d\n", locacao.inicioLocacao.dia);
+	printf("MES: %d\n", locacao.inicioLocacao.mes);
+	printf("ANO: %d\n", locacao.inicioLocacao.ano);
 	
 	// Encontrando carro
 	databaseCarro = fopen(DATABASECARRO, "rb+");
@@ -156,7 +164,7 @@ float calculoValorTotal(TData inicioLocacao, TData finalLocacao, float valor){
 	}
 	
 	valorTotal = valor * quantidadeDias;
-	valorTotal += ((finalLocacao.hora - inicioLocacao.hora) / 24) * valor;
+	valorTotal += (int) ((finalLocacao.hora - inicioLocacao.hora) / 24) * valor;
 	
 	return valorTotal;
 }
