@@ -76,11 +76,15 @@ void atualizarCarro(TCarro carro){
 	FILE *database;
 	TCarro buffer;
 	int aux = 0;
+	int auxLogico = 0;
 	
 	database = fopen(DATABASECARRO, "rb+");
 	
-	while((fread(&buffer,sizeof(TCarro), 1,database) != 0) && (buffer.id != carro.id)){
+	while((fread(&buffer,sizeof(TCarro), 1,database) != 0) && (auxLogico == 0)){
 		aux++;
+		if(buffer.id == carro.id){
+			auxLogico = 1;
+		}
 	}
 	
 	fseek(database, sizeof(TCarro) * (aux - 1), SEEK_SET);
