@@ -34,10 +34,10 @@ void iniciarLocacao(int cpf, float motor, int arCondicionado){
 	
 	carro.id = 0;
 	
-	databaseCarro = fopen(DATABASELOCACAO, "rb");
+	databaseCarro = fopen(DATABASECARRO, "rb");
 	databaseLocacao = fopen(DATABASELOCACAO, "rb+");
 	
-	// Para quando chegar no final do arquivo, ou no primeiro carro disponível
+	// Para quando chegar no final do arquivo, ou no primeiro carro disponível que atenda a condição do arCondicionado
 	while((fread(&carro, sizeof(TCarro),1,databaseCarro) != 0) && (auxLogico != 1)){
 		posicaoCarroFile++;
 		if((carro.disponivel == 1) && (carro.arCondicionado == arCondicionado) && ( carro.motor == motor)){

@@ -5,27 +5,32 @@ void telaCliente(){
     system("clear");
     int menu = 0;
     while(menu != 9){
-    	printf("\n\t# # Clientes \n\t[1]Cadastrar Novo Cliente \n\t[2]Atualizar Pontuação \n\t[3]Localizar Locações Realizadas \n\t[4]Listar Clientes entre 18 e 25 \n\t[5]Listar Clientes acima de 200 Pontos \n\t[9]Voltar \n\tOpção ");
+    	system("clear");
+    	printf("\n\t# # Clientes \n\n\t[1]Cadastrar Novo Cliente \n\n\t[2]Atualizar Pontuação \n\n\t[3]Localizar Locações Realizadas \n\n\t[4]Listar Clientes entre 18 e 25 \n\n\t[5]Listar Clientes acima de 200 Pontos \n\n\t[9]Voltar \n\n\tOpção ");
         scanf("%d",&menu);
 		if(menu == 1){
 			system("clear");
 			printf("\n\t# # Clientes\n");
 			printf("\t# # # Cadastrar Novo Cliente\n");
-			TCliente aux;
-			aux.idade = 18;			
+
+			TCliente aux;					
+
 			printf("\t      CPF: ");
 			scanf("%s", aux.cpf);
 			printf("\t      Nome: ");
-			scanf("%s", aux.nome);
-			while(aux.idade > 17){
+			scanf("%[^\n]s", aux.nome);
+			setbuf(stdin, NULL);			
 			printf("\t      Idade: ");
-			scanf(" %d", &aux.idade);}
+			scanf(" %d", &aux.idade);
 			printf("\t      Endereço: ");
-			scanf("%s", aux.endereco);
+			scanf("%[^\n]s", aux.endereco);
+			setbuf(stdin, NULL);
 			printf("\t      Cidade: ");
-			scanf("%s", aux.cidade);
+			scanf("%[^\n]s", aux.cidade);
+			setbuf(stdin, NULL);
 			printf("\t      Estado: ");
-			scanf("%s", aux.estado);			
+			scanf("%[^\n]s", aux.estado);
+			setbuf(stdin, NULL);			
 			printf("\t      Pontos: ");
 			scanf(" %d", &aux.pontos);			
 
@@ -63,7 +68,7 @@ void telaCliente(){
 
 			listarClientesPontos();			
 		}
-		if((menu < 0)&&(menu > 5)&&(menu != 9))
+		if((menu <= 0)&&(menu > 5)&&(menu != 9))
         	printf("\nComando não conhecido.\nTente Novamente.\n");    
         }
 }
