@@ -46,21 +46,21 @@ void iniciarLocacao(int cpf, float motor, int arCondicionado){
 	}
 	
 	if(carro.id != 0){
-		printf("\t=== CARRO ENCONTRADO ===\n");
-		printf("\tMODELO: %s\n",carro.modelo);
-		printf("\tCOR: %s\n",carro.cor);
-		printf("\tPRECO DIÁRIA: %f\n",carro.valorDiaria);
-		printf("\tQUILOMETRAGEM: %d\n",carro.quilometragem);
-		printf("\tPLACA: %s\n",carro.placa);
+		printf("\n\t   <> CARRO ENCONTRADO <>\n");
+		printf("\t      MODELO: %s\n",carro.modelo);
+		printf("\t      COR: %s\n",carro.cor);
+		printf("\t      PRECO DIÁRIA: %f\n",carro.valorDiaria);
+		printf("\t      QUILOMETRAGEM: %d\n",carro.quilometragem);
+		printf("\t      PLACA: %s\n",carro.placa);
 		
-		printf("\t=== DATA INICIO ===\n");
-		printf("\tDIA: ");
+		printf("\t   <> DATA INICIO <>\n");
+		printf("\t      DIA: ");
 		scanf(" %d", &locacao.inicioLocacao.dia);
-		printf("\tMES: ");
+		printf("\t      MES: ");
 		scanf(" %d", &locacao.inicioLocacao.mes);
-		printf("\tANO: ");
+		printf("\t      ANO: ");
 		scanf(" %d", &locacao.inicioLocacao.ano);
-		printf("\tHORA: ");
+		printf("\t      HORA: ");
 		scanf(" %d", &locacao.inicioLocacao.hora);
 		
 		locacao.devolucaoLocacao.dia = 0;
@@ -81,7 +81,7 @@ void iniciarLocacao(int cpf, float motor, int arCondicionado){
 		fflush(databaseCarro);
 		fflush(databaseLocacao);
 	}else{
-		printf("\tNAO HA CARRO DISPONIVEL\n");
+		printf("\t      NAO HÁ CARROS DISPONIVEIS!\n");
 	}
 	
 	fclose(databaseCarro);
@@ -126,7 +126,7 @@ void finalizarLocacao(int idLocacao,TData data,int quilometragemEntrega){
 	// Atualizando locacao
 	locacao.quilometragemFinal = quilometragemEntrega;
 	locacao.valorTotal = calculoValorTotal(locacao.inicioLocacao, locacao.devolucaoLocacao, carro.valorDiaria);
-	printf("\tVALOR TOTAL: %f\n", locacao.valorTotal);
+	printf("\n\t   <> VALOR TOTAL R$ %.2f\n", locacao.valorTotal);
 	
 	fseek(databaseLocacao, sizeof(TLocacao) * (posicaoLocacao - 1), SEEK_SET);
 	fwrite(&locacao, sizeof(TLocacao), 1, databaseLocacao);

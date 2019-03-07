@@ -4,8 +4,7 @@
 void telaLocacao(){
     system("clear");
     int menu = 0;
-    while(menu != 9){
-    		system("clear");
+    while(menu != 9){    		
     		printf("\n\t# # Locação \n\n\t[1]Nova Locação \n\n\t[2]Finalizar Locação \n\n\t[3]Quantidade de Carros Emprestados \n\n\t[9]Voltar \n\n\tOpção ");
         	scanf(" %d",&menu);
 		if(menu == 1){

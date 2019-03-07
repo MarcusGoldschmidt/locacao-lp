@@ -4,8 +4,7 @@
 void telaCliente(){
     system("clear");
     int menu = 0;
-    while(menu != 9){
-    	system("clear");
+    while(menu != 9){    	
     	printf("\n\t# # Clientes \n\n\t[1]Cadastrar Novo Cliente \n\n\t[2]Atualizar Pontuação \n\n\t[3]Localizar Locações Realizadas \n\n\t[4]Listar Clientes entre 18 e 25 \n\n\t[5]Listar Clientes acima de 200 Pontos \n\n\t[9]Voltar \n\n\tOpção ");
         scanf(" %d",&menu);
 		if(menu == 1){

@@ -24,6 +24,7 @@ int numeroRegistrosCliente(){
 void indexCliente(TCliente *clientes){
 	FILE *read;
 	int contadorDeRegistrosIniciais;
+
 	
 	contadorDeRegistrosIniciais = numeroRegistrosCliente();
 	
@@ -72,13 +73,13 @@ void listarClientesIdade(){
 }
 
 void listarCadastroCliente(TCliente cliente){
-	printf("CPF: %s\n", cliente.cpf);
-	printf("NOME: %s\n", cliente.nome);
-	printf("IDADE: %d\n", cliente.idade);
-	printf("ENDERECO: %s\n", cliente.endereco);
-	printf("CIDADE: %s\n", cliente.cidade);
-	printf("ESTADO: %s\n", cliente.estado);
-	printf("PONTOS: %d\n", cliente.pontos);
+	printf("\n\t      NOME: %s\n", cliente.nome);
+	printf("\t      CPF: %s\n", cliente.cpf);	
+	printf("\t      IDADE: %d\n", cliente.idade);
+	printf("\t      ENDERECO: %s\n", cliente.endereco);
+	printf("\t      CIDADE: %s\n", cliente.cidade);
+	printf("\t      ESTADO: %s\n", cliente.estado);
+	printf("\t      PONTOS: %d\n", cliente.pontos);
 }
 
 void atualizarPontuacao(char cpf[13]){
@@ -108,7 +109,7 @@ void atualizarPontuacao(char cpf[13]){
 			cliente.pontos += (int) locacao.valorTotal;
 		}
 	}
-	printf("%d PONTOS\n", cliente.pontos);
+	printf("\t%d PONTOS\n", cliente.pontos);
 	
 	// Salvando dados no arquivo
 	fseek(databaseCliente, sizeof(TCliente) * (auxPosicao - 1), SEEK_SET);
@@ -136,10 +137,10 @@ void localizarLocacao(){
 	databaseLocacao = fopen(DATABASELOCACAO, "rb+");
 	databaseCarro = fopen(DATABASECARRO, "rb+");	
 		
-	printf("[1] CPF | [2] NOME\n");
+	printf("\n\t      [1] CPF | [2] NOME : ");
 	scanf(" %d", &auxInt);
-	printf("PESQUISAR: ");
-	scanf(" %s", auxChar);
+	printf("\t      PESQUISAR: ");
+	scanf(" %[\n]s", auxChar);
 	
 	// Procurando cliente
 	if(auxInt == 1){	
@@ -157,7 +158,7 @@ void localizarLocacao(){
 	}
 	
 	// Procurando locações
-	printf("|PLACA | INICIO | ENTREGA | VALOR |\n");
+	printf("\n\t      |PLACA | INICIO | ENTREGA | VALOR |\n");
 	while(fread(&locacao, sizeof(TLocacao),1,databaseLocacao) != 0){
 		if(locacao.cpf == atoi(cliente.cpf)){	
 			// Procurando carro
