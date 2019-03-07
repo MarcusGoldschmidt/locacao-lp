@@ -4,11 +4,12 @@
 void telaCarro(){
     system("clear");
     int menu = 0;
-    while (menu != 9){  
-        printf("\n\t# # CARROS \n\t[1]Cadastrar Novo Carro \n\t[2]Atualizar Informações do Carro \n\t[3]Disponibilizar Carros p/ Venda \n\t[4]Localizar Carro Por Modelo \n\t[9]Voltar\n\tOpção ");
+    while (menu != 9){    	
+        printf("\n\t# # CARROS \n\n\t[1]Cadastrar Novo Carro \n\n\t[2]Atualizar Informações do Carro \n\n\t[3]Disponibilizar Carros p/ Venda \n\n\t[4]Localizar Carro Por Modelo \n\n\t[9]Voltar \n\n\tOpção ");
         scanf("%d",&menu);
         if(menu == 1){
 			system("clear");
+			/*
 			TCarro aux;		
             aux.disponivel = 0;
              aux.arCondicionado = 0;
@@ -36,10 +37,27 @@ void telaCarro(){
 
             while ((aux.disponivel != 1)&&(aux.disponivel != 2)){				
 			printf("\t      Disponibilidade [(1)Sim/(2)Não]: ");
-			scanf("%d", &aux.disponivel);}
-             
+			scanf("%d", &aux.disponivel);}             
+			*/
 
-			cadastrarCarro(aux);				
+			cadastroCarroInput();
+			
+			system("clear");
+			int temp = 0;
+			printf("\n\n\t      Carro cadastrado com sucesso!\n");
+
+				while ((temp != 1)&&(temp != 2)){
+					printf("\n\n\t      Cadastrar outro carro? \n\t      [(1)Sim/(2)Não]\n\n\t      Opção  ");
+					scanf("%d", &temp);
+					if(temp == 1){
+						system("clear");
+						cadastroCarroInput();
+					}
+					if(temp == 2){
+						system("clear");
+					}
+				}
+
 		}
 		    if(menu == 2){
 			system("clear");
@@ -96,7 +114,7 @@ void telaCarro(){
 		if(menu == 9){
 			system("clear");		
 		}
-        if((menu < 0)&&(menu > 4)&&(menu != 9))
+        if((menu <= 0)&&(menu > 4)&&(menu != 9))
         	printf("\nComando não conhecido.\nTente Novamente.\n");     
     }
 }

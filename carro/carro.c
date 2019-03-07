@@ -98,18 +98,20 @@ void disponibilizarCarrosVenda(){
 	TCarro bufferCarro;
 	
 	databaseCarro = fopen(DATABASECARRO, "rb");
-	databaseVenda = fopen(DATABASECARRO, "ab");
+	databaseVenda = fopen(DATABASEVENDA, "wb+");
 	
-	printf("\n\n         # # # PLACA | MODELO | ANO FABRICAÇÃO\n");
+	printf("\n\n          # # # PLACA <|> MODELO <|> ANO FABRICAÇÃO\n");
 	while(fread(&bufferCarro, sizeof(TCarro), 1, databaseCarro) != 0){
 		if((2019 - bufferCarro.anoFabricacao) > 3){
 			fwrite(&bufferCarro, sizeof(TCarro), 1, databaseVenda);
-			printf("              %s |", bufferCarro.placa);
-			printf("              %s |", bufferCarro.modelo);
+			printf("\n              %s <|>", bufferCarro.placa);
+			printf("              %s <|>", bufferCarro.modelo);
 			printf("              %d ", bufferCarro.anoFabricacao);
 			printf("\n");
 		}
 	}
+	fclose(databaseCarro);
+	fclose(databaseVenda);
 }
 
 int quantidadeCarrosEmprestados(){
@@ -126,4 +128,38 @@ int quantidadeCarrosEmprestados(){
 	}
 	
 	return aux;
+}
+
+void cadastroCarroInput(){
+	TCarro aux;		
+    aux.disponivel = 0;
+     aux.arCondicionado = 0;
+	printf("\n\t# # CARROS\n");
+	printf("\t# # # Cadastrar Novo Carro\n");
+	printf("\t      Modelo: ");
+	scanf("%s", aux.modelo);
+	printf("\t      Cor: ");
+	scanf("%s", aux.cor);
+	printf("\t      Motor: ");
+	scanf("%f", &aux.motor);
+	printf("\t      Ano de Fabricacao: ");
+	scanf("%d", &aux.anoFabricacao);
+	printf("\t      Placa: ");
+	scanf("%s", aux.placa);		
+
+	while ((aux.arCondicionado != 1)&&(aux.arCondicionado != 2)){	
+	printf("\t      Ar Condicionado [(1)Sim/(2)Não]: ");
+	scanf("%d", &aux.arCondicionado);}
+           
+	printf("\t      Quilometragem Inicial: ");
+	scanf("%d", &aux.quilometragem);
+	printf("\t      Valor da Diária: ");
+	scanf("%f", &aux.valorDiaria);
+
+    while ((aux.disponivel != 1)&&(aux.disponivel != 2)){				
+	printf("\t      Disponibilidade [(1)Sim/(2)Não]: ");
+	scanf("%d", &aux.disponivel);
+
+	cadastrarCarro(aux);
+	}
 }

@@ -36,4 +36,6 @@ void disponibilizarCarrosVenda();
 
 int quantidadeCarrosEmprestados();
 
+void cadastroCarroInput();
+
 #endif
