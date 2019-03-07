@@ -7,7 +7,7 @@ void telaLocacao(){
     while(menu != 9){
     		system("clear");
     		printf("\n\t# # Locação \n\n\t[1]Nova Locação \n\n\t[2]Finalizar Locação \n\n\t[3]Quantidade de Carros Emprestados \n\n\t[9]Voltar \n\n\tOpção ");
-        	scanf("%d",&menu);
+        	scanf(" %d",&menu);
 		if(menu == 1){
 			system("clear");
 			printf("\n\t# # Locação");
@@ -22,7 +22,7 @@ void telaLocacao(){
 			scanf(" %f",&motor);
 			while ((arCondicionado != 1)&&(arCondicionado != 2)){	
 			printf("\t      Ar Condicionado [(1)Sim/(2)Não]: ");
-			scanf("%d", &arCondicionado);}
+			scanf(" %d", &arCondicionado);}
 
 			iniciarLocacao(cpf, motor, arCondicionado);		
 		}
@@ -33,21 +33,21 @@ void telaLocacao(){
 
 			int idLocacao;
 			printf("\t      ID da Locação: ");
-			scanf("%d",&idLocacao);
+			scanf(" %d",&idLocacao);
 
 			TData data;
 			printf("\t      DIA: ");
-			scanf("%d",&data.dia);
+			scanf(" %d",&data.dia);
 			printf("\t      MES: ");
-			scanf("%d",&data.mes);
+			scanf(" %d",&data.mes);
 			printf("\t      ANO: ");
-			scanf("%d",&data.ano);
+			scanf(" %d",&data.ano);
 			printf("\t      HORA: ");
-			scanf("%d",&data.hora);
+			scanf(" %d",&data.hora);
 
 			int quilometragemEntrega;
 			printf("\t      QUILOMETRAGEM NA ENTREGA: ");
-			scanf("%d",&quilometragemEntrega);
+			scanf(" %d",&quilometragemEntrega);
 
 			finalizarLocacao(idLocacao, data, quilometragemEntrega);		
 		}

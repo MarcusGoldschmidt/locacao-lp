@@ -7,7 +7,7 @@ void telaCliente(){
     while(menu != 9){
     	system("clear");
     	printf("\n\t# # Clientes \n\n\t[1]Cadastrar Novo Cliente \n\n\t[2]Atualizar Pontuação \n\n\t[3]Localizar Locações Realizadas \n\n\t[4]Listar Clientes entre 18 e 25 \n\n\t[5]Listar Clientes acima de 200 Pontos \n\n\t[9]Voltar \n\n\tOpção ");
-        scanf("%d",&menu);
+        scanf(" %d",&menu);
 		if(menu == 1){
 			system("clear");
 			printf("\n\t# # Clientes\n");
@@ -16,20 +16,20 @@ void telaCliente(){
 			TCliente aux;					
 
 			printf("\t      CPF: ");
-			scanf("%s", aux.cpf);
+			scanf(" %s", aux.cpf);
 			printf("\t      Nome: ");
-			scanf("%[^\n]s", aux.nome);
+			scanf(" %[^\n]s", aux.nome);
 			setbuf(stdin, NULL);			
 			printf("\t      Idade: ");
 			scanf(" %d", &aux.idade);
 			printf("\t      Endereço: ");
-			scanf("%[^\n]s", aux.endereco);
+			scanf(" %[^\n]s", aux.endereco);
 			setbuf(stdin, NULL);
 			printf("\t      Cidade: ");
-			scanf("%[^\n]s", aux.cidade);
+			scanf(" %[^\n]s", aux.cidade);
 			setbuf(stdin, NULL);
 			printf("\t      Estado: ");
-			scanf("%[^\n]s", aux.estado);
+			scanf(" %[^\n]s", aux.estado);
 			setbuf(stdin, NULL);			
 			printf("\t      Pontos: ");
 			scanf(" %d", &aux.pontos);			

@@ -10,7 +10,7 @@ int main(){
     while (menu != 9){ 
     	system("clear"); 
         printf("\n    # MENU PRINCIPAL \n\n      [1]Locações \n\n      [2]Clientes \n\n      [3]Carros \n\n      [9]Sair \n\n      Opção ");
-        scanf("%d",&menu);
+        scanf(" %d",&menu);
         if(menu == 1){
 			system("clear");
 			telaLocacao();			
