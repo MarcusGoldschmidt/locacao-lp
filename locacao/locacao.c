@@ -79,7 +79,8 @@ void iniciarLocacao(int cpf, float motor, int arCondicionado){
 		carro.disponivel = 0;
 		fwrite(&carro,sizeof(TCarro),1,databaseCarro);
 		
-		// Ajustando cursor de locacao
+		// Salvando locacao
+		fwrite(&locacao,sizeof(TLocacao),1,databaseLocacao);
 		
 		fflush(databaseCarro);
 		fflush(databaseLocacao);
