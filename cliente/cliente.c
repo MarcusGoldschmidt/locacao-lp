@@ -44,31 +44,29 @@ void cadastrarCliente(TCliente novoRegistro){
 }
 
 void listarClientesPontos(){
-	TCliente *clientes;
+	FILE *read;
+
+	TCliente cliente;
+    read = fopen(DATABASECLIENTE, "rb");		
 	
-	clientes = (TCliente *) malloc(sizeof(TCliente));
-	
-	indexCliente(clientes);
-	
-	for(int i = 0; i < numeroRegistrosCliente(); i++){
-		if(clientes[i].pontos > 200){
-			listarCadastroCliente(clientes[i]);
-		}
-	}
+	while(fread(&cliente, sizeof(TCliente), 1, read) != 0){
+        if(cliente.pontos > 200){
+            listarCadastroCliente(cliente);
+        }
+    }
 }
 
 void listarClientesIdade(){
-	TCliente *clientes;
+	FILE *read;
+
+	TCliente cliente;
+    read = fopen(DATABASECLIENTE, "rb");		
 	
-	clientes = (TCliente *) malloc(sizeof(TCliente));
-	
-	indexCliente(clientes);
-	
-	for(int i = 0; i < numeroRegistrosCliente(); i++){
-		if(clientes[i].idade > 18 && clientes[i].idade < 25){
-			listarCadastroCliente(clientes[i]);
-		}
-	}
+	while(fread(&cliente, sizeof(TCliente), 1, read) != 0){
+        if(cliente.idade > 18 && cliente.idade < 25){
+            listarCadastroCliente(cliente);
+        }
+    }
 	
 }
 
